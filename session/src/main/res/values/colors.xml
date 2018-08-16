@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#355989</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="denimBlue">#355989</color>
+    <color name="peacokBlue">#9f005c9c</color>
+    <color name="text">#4a4a4a</color>
+    <color name="pumpkinOrange">#f07e01</color>
+    <color name="veryLightBlue">#ebf3ff</color>
+    <color name="azure">#01aef0
+    </color>
+</resources>
