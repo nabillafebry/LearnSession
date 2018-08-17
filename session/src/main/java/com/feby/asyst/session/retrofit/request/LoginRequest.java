@@ -1,10 +1,10 @@
 package com.feby.asyst.session.retrofit.request;
 
-import com.feby.asyst.session.model.User;
+import com.feby.asyst.session.model.Login;
 
 public class LoginRequest {
     String method;
-    User param;
+    Login param;
 
     public String getMethod() {
         return method;
@@ -14,11 +14,11 @@ public class LoginRequest {
         this.method = method;
     }
 
-    public User getParam() {
+    public Login getParam() {
         return param;
     }
 
-    public void setParam(User param) {
+    public void setParam(Login param) {
         this.param = param;
     }
 }

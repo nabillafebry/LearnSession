@@ -1,10 +1,10 @@
 package com.feby.asyst.session.retrofit.response;
 
-import com.feby.asyst.session.model.User;
+import com.feby.asyst.session.model.Login;
 
 public class LoginResponse {
     String status, message;
-    User data;
+    Login data;
 
     public String getStatus() {
         return status;
@@ -22,11 +22,11 @@ public class LoginResponse {
         this.message = message;
     }
 
-    public User getData() {
+    public Login getData() {
         return data;
     }
 
-    public void setData(User data) {
+    public void setData(Login data) {
         this.data = data;
     }
 }
