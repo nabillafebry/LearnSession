@@ -1,0 +1,13 @@
+http://pgntest.asyst.co.id/api/v1/Login/getProfileInfo
+
+{"method":"getProfileInfo","param":{"password":"Password1","username":"papang"}}
+
+
+http://pgntest.asyst.co.id/api/v1/Task/getAllTask
+
+{
+  "method" : "getAllTask",
+  "param" : {
+      "username":  "papang"
+  }
+}
