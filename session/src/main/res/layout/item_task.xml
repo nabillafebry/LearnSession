@@ -20,7 +20,7 @@
             android:textStyle="bold"
             android:textColor="@color/denimBlue"
             android:textSize="15sp"
-            android:id="@+id/name_textview"/>
+            android:id="@+id/customer_name_textview"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -29,8 +29,8 @@
             android:layout_margin="10dp"
             android:textSize="15sp"
             android:textColor="@color/text"
-            android:id="@+id/address_textview"
-            android:layout_below="@id/name_textview"/>
+            android:id="@+id/customer_address_textview"
+            android:layout_below="@id/customer_name_textview"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -50,7 +50,7 @@
             android:layout_margin="10dp"
             android:textSize="15sp"
             android:id="@+id/start_date_textview"
-            android:layout_below="@id/address_textview"
+            android:layout_below="@id/customer_address_textview"
             android:textColor="@color/text"/>
 
         <TextView
@@ -59,8 +59,8 @@
             tools:text="36482"
             android:layout_margin="10dp"
             android:textSize="15sp"
-            android:id="@+id/id_task_textview"
-            android:layout_below="@id/address_textview"
+            android:id="@+id/task_id_textview"
+            android:layout_below="@id/customer_address_textview"
             android:textColor="@color/veryLightBlue"
             android:layout_alignParentRight="true"
             android:background="@color/azure"/>
@@ -72,7 +72,7 @@
             tools:text="#003496843"
             android:layout_margin="10dp"
             android:textSize="15sp"
-            android:id="@+id/costumer_id_textview"
+            android:id="@+id/customer_id_textview"
             android:layout_alignParentRight="true"
             android:textColor="@color/peacokBlue"/>
 
