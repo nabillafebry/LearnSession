@@ -1,10 +1,10 @@
 package com.feby.asyst.session.retrofit.request;
 
-import com.feby.asyst.session.model.Task;
+import com.feby.asyst.session.model.Login;
 
 public class TaskRequest {
     String method;
-    Task param;
+    Login param;
 
     public String getMethod() {
         return method;
@@ -14,11 +14,11 @@ public class TaskRequest {
         this.method = method;
     }
 
-    public Task getParam() {
+    public Login getParam() {
         return param;
     }
 
-    public void setParam(Task param) {
+    public void setParam(Login param) {
         this.param = param;
     }
 }

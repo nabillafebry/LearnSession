@@ -1,5 +1,6 @@
 package com.feby.asyst.session;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,6 +14,7 @@ import com.feby.asyst.session.retrofit.ApiClient;
 import com.feby.asyst.session.retrofit.ApiService;
 import com.feby.asyst.session.retrofit.request.LoginRequest;
 import com.feby.asyst.session.retrofit.response.LoginResponse;
+import com.feby.asyst.session.utility.SessionUtil;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     EditText etUsername, etPassword;
     Button btnLogin;
+    SessionUtil sessionUtil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnLogin = findViewById(R.id.login_button);
 
         btnLogin.setOnClickListener(this);
+
+        sessionUtil = new SessionUtil(this);
+
+        checkLogin();
 
     }
 
@@ -47,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 else {
 
+                    getLoginData();
                 }
                 break;
         }
@@ -57,11 +65,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         LoginRequest loginRequest = new LoginRequest();
         Call<LoginResponse> call = apiService.getLogin(loginRequest);
 
-        Login param = new Login();
-        param.setUsername(etUsername.getText().toString());
-        param.setPassword(etPassword.getText().toString());
+        final Login login = new Login();
+        login.setUsername(etUsername.getText().toString());
+        login.setPassword(etPassword.getText().toString());
 
         loginRequest.setMethod("getProfileInfo");
-        loginRequest.setParam(param);
+        loginRequest.setParam(login);
+
+        call.enqueue(new Callback<LoginResponse>() {
+            @Override
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                sessionUtil.saveUsername(login.getUsername());
+                sessionUtil.savePassword(login.getPassword());
+                Toast.makeText(getApplicationContext(), "Login Berhasil!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, TaskActivity.class);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Login Gagal!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        
+    }
+
+    private void checkLogin(){
+        if (!sessionUtil.loadUsername().equalsIgnoreCase("")){
+            Intent intent = new Intent(MainActivity.this, TaskActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 }

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.feby.asyst.session.R;
 import com.feby.asyst.session.model.Task;
+import com.feby.asyst.session.utility.DateUtils;
 
 import java.util.ArrayList;
 
@@ -68,10 +69,16 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder>{
 
         holder.tvCustomerName.setText(task.getCustomer_name());
         holder.tvCustomerAddress.setText(task.getCustomer_address());
-        holder.tvCustomerID.setText(task.getCustomer_id());
+        holder.tvCustomerID.setText("#"+task.getCustomer_id());
         holder.tvTaskID.setText(task.getTask_id());
-        holder.tvStartDate.setText(task.getStartDate());
-        holder.tvFinishDate.setText(task.getFinishDate());
+        holder.tvStartDate.setText(DateUtils.formatDate("yyyy-MM-dd", "EEEE, dd MMMM yyyy", task.getStartDate()));
+        if (task.getFinishDate() != null){
+            holder.tvFinishDate.setVisibility(View.VISIBLE);
+            holder.tvFinishDate.setText("Selesai pada "+ DateUtils.formatDate("yyyy-MM-dd ssss", "dd MMM yyyy",task.getFinishDate()));
+        }
+        else {
+            holder.tvFinishDate.setVisibility(View.GONE);
+        }
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override

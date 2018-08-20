@@ -1,6 +1,7 @@
 package com.feby.asyst.session.retrofit;
 
 import com.feby.asyst.session.retrofit.request.LoginRequest;
+import com.feby.asyst.session.retrofit.request.TaskRequest;
 import com.feby.asyst.session.retrofit.response.LoginResponse;
 import com.feby.asyst.session.retrofit.response.TaskResponse;
 
@@ -14,8 +15,8 @@ public interface ApiService {
     @POST("Login/getProfileInfo")
     Call<LoginResponse> getLogin(@Body LoginRequest loginRequest);
 
-    @GET("Task/getAllTask")
-    Call<TaskResponse> getTask(@Body TaskResponse taskRequest);
+    @POST("Task/getAllTask")
+    Call<TaskResponse> getTask(@Body TaskRequest taskRequest);
 
 
 }
